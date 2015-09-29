@@ -11,6 +11,12 @@ class Location(models.Model):
     state_long = models.CharField(max_length=100)
     state_short = models.CharField(max_length=2)
 
+    class Meta:
+        ordering = ['city']
+
+    def __str__(self):
+        return '{}, {}'.format(self.city, self.state_short)
+
 
 class User(models.Model):
     """
