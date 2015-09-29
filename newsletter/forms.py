@@ -15,6 +15,13 @@ class SubscribeForm(ModelForm):
         exclude = []
 
     def __init__(self, *args, **kwargs):
+        """
+        Add crispy_forms helper for adding a submit button and override a
+        couple field properties to better fit the provided screenshot.
+        """
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', 'Subscribe'))
-        return super(SubscribeForm, self).__init__(*args, **kwargs)
+        self.helper.add_input(Submit('submit', 'Subscribe', css_class="btn-block"))
+        super(SubscribeForm, self).__init__(*args, **kwargs)
+
+        self.fields['location'].empty_label = "Where do you live?"
+        self.fields['email'].label = "Email Address"
