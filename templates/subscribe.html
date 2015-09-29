@@ -1,10 +1,18 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<title>Subscribe</title>	
 	</head>
 	<body>
-		{{ form }}
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					{% crispy form %}
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
 
