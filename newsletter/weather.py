@@ -1,10 +1,11 @@
+from NotiWeather import settings
 from newsletter.models import User
 from urllib import request
 import re
 import json
 
-# TODO: This should go in settings
-API_KEY = "efebc958932e6f24"
+
+API_KEY = settings.WUNDERGROUND_KEY
 
 API_URL = "http://api.wunderground.com/api/{}/conditions/almanac/q/{}/{}.json"
 
