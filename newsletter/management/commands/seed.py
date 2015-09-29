@@ -15,7 +15,7 @@ class Command(BaseCommand):
     Usage: `$ python manage.py seed`
     """
     def handle(self, *args, **options):
-        with open(csv_path, 'r', encoding='mac_roman') as csvfile:
+        with open(csv_path, 'r') as csvfile:
             cityreader = csv.reader(csvfile, delimiter=',')
             for city in cityreader:
                 try:
