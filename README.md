@@ -13,6 +13,7 @@ export WUNDERGROUND_KEY='your_wunderground_api_key'
 
 ## Application Setup
 1. `$ pip install -r requirements.txt`
+1. `$ ./manage.py migrate`
 1. `$ ./manage.py createsuperuser`
 1. `$ ./manage.py seed`
 
