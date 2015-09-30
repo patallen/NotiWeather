@@ -27,15 +27,19 @@ def send_email(user):
     icon_url = data['current_observation']['icon_url']
     readable_weather = '{} degrees, {}.'.format(temp_now, weather_now.lower())
 
+    email = user.email
     # Set email's subject based on current conditions
-    if (temp_now >= avg_high+5) or ('sun' in weather_now.lower()):
+    # NOTE: We are using the average high temperature in our comparison...
+    # -- This could be done a variety of ways including using the median of the
+    # -- average high and low temperature, or using the average low in the
+    # -- morning/night and the average high during the day.
+    if (temp_now >= avg_high+5) or ('clear' in weather_now.lower()):
         subject = NICE_OUT_SUBJECT
     elif (temp_now <= avg_high-5) or ('rain' in weather_now.lower()):
         subject = POOR_OUT_SUBJECT
     else:
         subject = REGULAR_SUBJECT
 
-    email = user.email
     text = get_template('email/newsletter.txt')
     html = get_template('email/newsletter.html')
     context = Context(
@@ -47,6 +51,7 @@ def send_email(user):
     )
     html_content = html.render(context)
     text_content = text.render(context)
+
     message = EmailMultiAlternatives(
         subject,
         text_content,
