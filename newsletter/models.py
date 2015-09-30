@@ -26,3 +26,6 @@ class User(models.Model):
     """
     email = models.EmailField(blank=False, unique=True)
     location = models.ForeignKey(Location, blank=False)
+
+    def __str__(self):
+        return self.email
