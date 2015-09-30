@@ -9,6 +9,7 @@ NICE_OUT_SUBJECT = "It's nice out! Enjoy a discount on us!"
 POOR_OUT_SUBJECT = "Not so nice out? That's okay, enjoy a discount on us!"
 REGULAR_SUBJECT = "Enjoy a discount on us!"
 
+
 def send_email(user):
     """
     Function that handles the sending of weather-powered emails to users.
@@ -26,7 +27,7 @@ def send_email(user):
     icon_url = data['current_observation']['icon_url']
     readable_weather = '{} degrees, {}.'.format(temp_now, weather_now.lower())
 
-    # Set subject based on current conditions
+    # Set email's subject based on current conditions
     if (temp_now >= avg_high+5) or ('sun' in weather_now.lower()):
         subject = NICE_OUT_SUBJECT
     elif (temp_now <= avg_high-5) or ('rain' in weather_now.lower()):
@@ -54,5 +55,3 @@ def send_email(user):
     )
     message.attach_alternative(html_content, 'text/html')
     message.send()
-
-    print('Email Successfully sent to {}'.format(user.email))
