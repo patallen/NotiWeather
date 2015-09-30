@@ -3,17 +3,22 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<title>Subscribe</title>
+		<title>{% block title %}{% endblock %} - NotiWeather</title>
 	</head>
 	<body>
 		<div class="container">
 			<div class="navbar navbar-default">
 				<div class="navbar-header">
-					<span class="navbar-brand">NotiWeather</div><span class="navbar-text pull-right"><small>Weather-powered notifications</small></span>
+					<a class="navbar-brand" href="/">NotiWeather</a>
 				</div>
+				<span class="navbar-text hidden-sm hidden-xs">
+					<small>Weather-powered notifications</small>
+				</span>
 			</div>
 		</div>
-		{% block content %}
-		{% endblock %}
+		<div class="container">
+			{% block content %}
+			{% endblock %}
+		</div>
 	</body>
 </html>
