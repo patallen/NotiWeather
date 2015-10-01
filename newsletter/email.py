@@ -33,12 +33,11 @@ def send_email(user):
     # -- This could be done a variety of ways including using the median of the
     # -- average high and low temperature, or using the average low in the
     # -- morning/night and the average high during the day.
+    subject = REGULAR_SUBJECT
     if (temp_now >= avg_high+5) or ('clear' in weather_now.lower()):
         subject = NICE_OUT_SUBJECT
-    elif (temp_now <= avg_high-5) or ('rain' in weather_now.lower()):
+    if (temp_now <= avg_high-5) or ('rain' in weather_now.lower()):
         subject = POOR_OUT_SUBJECT
-    else:
-        subject = REGULAR_SUBJECT
 
     text = get_template('email/newsletter.txt')
     html = get_template('email/newsletter.html')
